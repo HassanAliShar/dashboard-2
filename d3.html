@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seating Chart</title>
+<style>
+  /* Add any CSS styles here */
+  .seat {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+  }
+  .occupied {
+    background-color: gray;
+  }
+</style>
+</head>
+<body>
+<h1>Seating Chart</h1>
+<div id="seatingChart"></div>
+
+<script>
+// Define the seating chart data
+const numRows = 8;
+const numCols = 10;
+const seatingData = Array.from({ length: numRows }, () => Array(numCols).fill(false)); // Initialize with all seats available
+
+// Render the seating chart
+const seatingChartDiv = document.getElementById("seatingChart");
+for (let i = 0; i < numRows; i++) {
+  for (let j = 0; j < numCols; j++) {
+    const seatDiv = document.createElement("div");
+    seatDiv.className = "seat";
+    seatDiv.dataset.row = i;
+    seatDiv.dataset.col = j;
+    seatDiv.textContent = `${i + 1}-${j + 1}`;
+    seatDiv.addEventListener("click", toggleSeat);
+    seatingChartDiv.appendChild(seatDiv);
+  }
+  seatingChartDiv.appendChild(document.createElement("br"));
+}
+
+// Function to toggle the availability of a seat
+function toggleSeat() {
+  const row = parseInt(this.dataset.row);
+  const col = parseInt(this.dataset.col);
+  seatingData[row][col] = !seatingData[row][col]; // Toggle the availability
+  this.classList.toggle("occupied"); // Toggle the occupied class for styling
+}
+
+</script>
+</body>
+</html>

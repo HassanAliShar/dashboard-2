@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getDayName(dayNumber) {
+            const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return weekdays[dayNumber];
+        }
+
+        function separateDays(dates) {
+            let result = {
+                numbers: [],
+                names: []
+            };
+
+            for (let date of dates) {
+                if (!isNaN(date.day)) {
+                    result.numbers.push(parseInt(date.day));
+                } else {
+                    const dayIndex = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].indexOf(v.day.day);
+                    console.log(dayIndex);
+                    // const dayIndex = new Date(date.day).getDay();
+                    // result.names.push(getDayName(dayIndex));
+                }
+            }
+
+            return result;
+        }
+
+        var dates = [
+            { id: 1, day: "1" },
+            { id: 1, day: "2" },
+            { id: 1, day: "10" },
+            { id: 1, day: "sunday" },
+            { id: 1, day: "monday" }
+        ];
+
+        console.log(separateDays(dates));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
